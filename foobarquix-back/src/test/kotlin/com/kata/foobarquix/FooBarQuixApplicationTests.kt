@@ -15,7 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class FooBarQuixApplicationTests(@Autowired val restTemplate: TestRestTemplate) {
 
-	//Ci-dessous les 10 cas de tests dans le front-end
+	//Ci-dessous les cas de tests passant et non passant
 
 	//Non conversion de 1
 	@Test
@@ -105,5 +105,32 @@ class FooBarQuixApplicationTests(@Autowired val restTemplate: TestRestTemplate) 
 		val inputNumber = 15
 		val response = restTemplate.getForObject<FooBarQuixController.ResultDto>(url + inputNumber)
 		assert(response?.result.equals("FooBarBar"))
+	}
+
+	// Non conversion de 101
+	@Test
+	fun translateTest101() {
+		val url = "/foo-bar-quix/"
+		val inputNumber = 101
+		val response = restTemplate.getForObject<FooBarQuixController.ResultDto>(url + inputNumber)
+		assert(response?.result.equals("101"))
+	}
+
+	// Non conversion de 29
+	@Test
+	fun translateTest29() {
+		val url = "/foo-bar-quix/"
+		val inputNumber = 29
+		val response = restTemplate.getForObject<FooBarQuixController.ResultDto>(url + inputNumber)
+		assert(response?.result.equals("29"))
+	}
+
+	// Non conversion de 19
+	@Test
+	fun translateTest19() {
+		val url = "/foo-bar-quix/"
+		val inputNumber = 19
+		val response = restTemplate.getForObject<FooBarQuixController.ResultDto>(url + inputNumber)
+		assert(response?.result.equals("19"))
 	}
 }
