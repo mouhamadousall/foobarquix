@@ -1,3 +1,6 @@
 <div class="container"> 
-    To Be Completed
+  <form [formGroup]="form">
+    <input formControlName="inputNumber" name="inputText" type="number" placeholder="Input number" /> <br />
+    <button type="button" class="btn btn-primary" (click)="submitNumber()">Convert Number</button>
+  </form>
 </div>
